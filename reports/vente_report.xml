@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+<report
+	id="vente_report_pdf_action"
+	model="sale.order"
+	string="Vente de fûts report"
+	report_type="qweb-html"
+	name="gestion_de_futs.vente_report_pdf"
+	file="gestion_de_futs.vente_report"
+	attachment_use="True"
+	menu="True"
+	/>
+
+
+		<template id="vente_report_pdf">
+			
+			<t t-call="report.html_container">
+				<t t-call="report.external_layout">
+					<div class="page">
+						<div class="oe_structure"/>
+						<h3>VENTE DE FUTS</h3>
+						<div class="page-header"/>
+						<div class="row">
+							<div class="col-sx-12">
+							
+							
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>DATE</th>
+										<th>CLIENT</th>
+										<th>NOMBRE DE FUTS</th>
+										<th>CAMION</th>
+									</tr>	
+								
+								</thead>
+								<tbody>
+									
+										<t t-foreach="docs" t-as="o">
+											<tr>
+										<td><span t-field="o.date_order"/></td>
+										<td><span t-field="o.partner_id"/></td>
+										<td><span t-field="o.total_sortie"/></td>
+										<td>
+										<t t-foreach="o.vehicle_ids" t-as="v">
+										<span t-field ="v.name"/>,  
+										</t>
+											
+										</td>
+								
+											</tr>
+										</t>
+									
+								</tbody>
+								
+								
+								
+							</table>
+							</div>
+							</div>
+						</div>
+					
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

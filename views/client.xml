@@ -1,0 +1,104 @@
+<odoo>
+    <data>
+		
+		<record model="ir.ui.view" id="partner_client_form_view">
+			<field name="name">partner.client</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+			
+				<xpath expr="//field[@name='type']" position="after">
+					
+					<field name="solde"/>
+				</xpath>
+				  <xpath expr="//sheet/group/group/field[@name='function']" position="replace">
+					<field name="function" invisible="1"/>
+				</xpath>
+				<xpath expr="//sheet/group/group/field[@name='fax']" position="replace">
+					<field name="fax" invisible="1"/>
+				</xpath>
+				<xpath expr="//sheet/group/group/field[@name='lang']" position="replace">
+					<field name="lang" invisible="1"/>
+				</xpath>
+				<xpath expr="//sheet/group/group/field[@name='title']" position="replace">
+					<field name="title" invisible="1"/>
+				</xpath>
+				<xpath expr="//sheet/group/group/field[@name='website']" position="replace">
+					<field name="website" invisible="1"/>
+				</xpath>
+				<xpath expr="//sheet/group/group/field[@name='category_id']" position="replace">
+					<field name="category_id" invisible="1"/>
+				</xpath>
+				<notebook position="attributes">
+					<attribute name="invisible">1</attribute>
+				</notebook>
+				
+			</field>
+		</record> 
+		<!--
+		<record id="view_partner_simple_form" model="ir.ui.view">
+            <field name="name">res.partner.simplified.form</field>
+            <field name="model">gestiondefuts.client</field>
+            <field name="arch" type="xml">
+                <form string="Contact">
+                    <field name="is_company" invisible="1"/>
+                    <field name="type" invisible="1"/>
+                    <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium"}'/>
+                    <div class="oe_title">
+                        <field name="company_type" options="{'horizontal': true}" class="oe_edit_only" widget="radio"/>
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Name" attrs="{'required' : [('type', '=', 'contact')]}"/>
+                        </h1>
+                        <field name="parent_id"
+                            placeholder="Company"
+                            domain="[('is_company', '=', True)]" context="{'default_is_company': True}"
+                            attrs="{'invisible': [('is_company','=', True)]}"/>
+                    </div>
+                    <group>
+                        <field name="solde"/>
+                        <field name="function" placeholder="e.g. Sales Director"/>
+                        <field name="user_ids" invisible="1"/>
+                        <field name="email" widget="email" required="context.get('force_email', False)" attrs="{'required': [('user_ids','!=', [])]}"/>
+                        <field name="phone" widget="phone"/>
+                        <field name="mobile" widget="phone"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+		-->
+			<!-- TREE VIEW -->
+		<!-- Tree view for CLIENT -->
+		<record model="ir.ui.view" id="partner_client_tree_view">
+			<field name="name">partner.client.tree</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="/tree/field[@name='phone']" position="replace">
+					<field name="solde"/>
+				</xpath>
+				<xpath expr="/tree/field[@name='solde']" position="before">
+					<field name="city"/>
+				</xpath>
+				<xpath expr="/tree/field[@name='email']" position="replace"/>
+					
+					
+			
+			</field>
+		</record>
+		
+		<!-- Action CLIENT -->
+	    <record model="ir.actions.act_window" id="client_list_action">
+	      <field name="name">Client</field>
+	      <field name="res_model">res.partner</field>
+	      <field name="view_type">form</field>
+	      <field name="view_mode">tree,form</field>
+	      <field name="help" type="html">
+	      	<p class="oe_view_nocontent_create">Ajouter un nouveau client</p>
+	      </field>
+	    </record>
+    
+		<menuitem id="client_menu" name="Client" parent="main_gestiondefuts_menu"/>
+		<menuitem id="contact_menu" name="Client" parent="client_menu" action="client_list_action"/>
+		
+    </data>
+</odoo>

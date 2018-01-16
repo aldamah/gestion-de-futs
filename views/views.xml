@@ -1,0 +1,88 @@
+<odoo>
+  <data>
+    
+    <!-- actions opening views on models -->
+    <record model="ir.ui.view" id="view_futs_form">
+    <field name="name">gestiondefuts.fut.form</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_normal_form_view"/>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+		<field name="name" position="after">
+			
+		</field>
+		 
+         <xpath expr="//field[@name='sale_ok']" position="after">
+         	<label for="plein"/>
+         	<field name="plein"/>
+         </xpath>
+         <xpath expr="//field[@name='barcode']" position="replace">
+         	<field name="barcode" invisble="1"/>
+         </xpath>
+    </field>
+</record>
+
+	<record model="ir.ui.view" id="view_futs_tree">
+		<field name="name">gestiondefuts.fut.tree</field>
+		<field name="model">product.product</field>
+		<field name="inherit_id" ref="product.product_product_tree_view"/>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='lst_price']" position="replace"/>
+			<xpath expr="//field[@name='barcode']" position="replace"/>
+		</field>
+	</record>
+	
+	<record model="ir.ui.view" id="view_futs_kanban">
+		<field name="name">gestiondefuts.fut.kanban</field>
+		<field name="model">product.product</field>
+		<field name="inherit_id" ref="product.product_kanban_view"/>
+		<field name="type">kanban</field>
+		<field name="arch" type="xml">
+			<xpath expr="//kanban/templates/t[@t-name='kanban-box']//div[@class='oe_kanban_details']" position="replace">
+				<div class="oe_kanban_details">
+                                    <strong><field name="name"/></strong>
+                                    <ul>
+                                       
+                                        <li>Stock: <field name="qty_available"/> <field name="uom_id"/></li>
+                                        
+                                    </ul>
+                                    <div name="tags"/>
+                 </div>
+			</xpath>
+		</field>
+	</record>
+    
+    <!-- Action FUTS -->
+    <record model="ir.actions.act_window" id="futs_list_action">
+      <field name="name">Futs</field>
+      <field name="res_model">product.product</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,kanban,form</field>
+      <field name="help" type="html">
+      	<p class="oe_view_nocontent_create">Ajouter des fûts</p>
+      </field>
+    </record>
+    
+
+    <!-- Top menu  -->
+    
+    <menuitem name="Gestion de fûts" id="main_gestiondefuts_menu"/>
+    
+    <!-- menu Mouvements -->
+    
+    <menuitem name="Mouvements" id="gestiondefuts_menu" parent="main_gestiondefuts_menu"/>
+    
+   
+    <!-- menu Inventaire -->
+    
+    <menuitem name="Stockage" id="stock_main_menu" parent="main_gestiondefuts_menu"/>
+    <menuitem name="Inventaire" id="inventaire_menu" parent="stock_main_menu" action="futs_list_action"/>
+    <menuitem name="Stock" id="stock_menu" parent="stock_main_menu" action="futs_list_action"/>
+    
+    <!-- menu Report -->
+    <menuitem name="Rapport" id="main_report_menu" parent="main_gestiondefuts_menu"/>
+    <menuitem name="Rapport" id="report_menu" parent="main_report_menu" action="futs_list_action"/>
+   
+  </data>
+</odoo>

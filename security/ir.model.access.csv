@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gestion_de_futs_gestion_de_futs,gestion_de_futs.gestion_de_futs,model_gestion_de_futs_gestion_de_futs,,1,0,0,0

@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+		
+		<record model="ir.ui.view" id="retour_form_view">
+			<field name="name">gestiondefuts.retour.form</field>
+			<field name="model">gestiondefuts.retour</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+					<group>
+						
+						<field name="partner_id" string="Client"/>
+					
+					</group>
+					<group>
+					<field name="date_order" string="Date"/>
+					<field name="date_planned" string="Date prévu"/>
+					
+					</group>
+					<group>
+					<field name="product_id" string="Fût"/>
+					<field name="product_qty" string="Quantité"/>
+					</group>
+					</group>
+					
+					<group></group>
+					
+				</form>
+				
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="retour_tree_view">
+			<field name="name">gestiondefuts.retour.tree</field>
+			<field name="model">gestiondefuts.retour</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date_order" string="Date"/>
+					<field name="date_planned" string="Date"/>
+					<field name="partner_id" string="Client"/>
+					<field name="product_id" string="Futs"/>
+					<field name="product_qty" string="Quantité"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="list_retour_action">
+			<field name="name">retour</field>
+			<field name="res_model">gestiondefuts.retour</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+	      	<p class="oe_view_nocontent_create">Ajouter un retour</p>
+	      </field>
+		</record>
+		
+		 <!-- MEnu dans la categorie -->
+   
+   	<menuitem id="retour_menu" name="Retour de fûts" parent="gestiondefuts_menu" action="list_retour_action"/>
+ 		
+    </data>
+</odoo>

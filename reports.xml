@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <odoo>
+	<data>
+		<report
+			id="report_client"
+			model="sale.order"
+			string="Rapport de vente"
+			name="gestiondefuts.report_vente_view"
+			file="gestiondefuts.report_vente"
+			report_type="qweb-pdf" />
+			
+		<template id="report_session_view">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="report.external_layout">
+						<div class="page">
+							<h2 t-field="doc.name"/>
+							<p>From</p>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>
+ -->
