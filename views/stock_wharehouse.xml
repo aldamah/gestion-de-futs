@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record id="cust_view_warehouse_tree" model="ir.ui.view">
+            <field name="name">stock.warehouse.tree</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse_tree"/>
+            <field name="arch" type="xml">
+            </field>
+        </record>
