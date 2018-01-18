@@ -1,7 +1,7 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo import api, fields, models
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.tools.float_utils import float_is_zero, float_compare
 from odoo.exceptions import UserError, AccessError
@@ -21,18 +21,11 @@ class Retour(models.Model):
     company_id = fields.Many2one('res.company', string='Company', store=True, readonly=True)
     picking_count = fields.Integer(compute='_compute_picking', string='Receptions', default=0)
     picking_ids = fields.Many2many('stock.picking', compute='_compute_picking', string='Receptions', copy=False)
-    picking_type_id = fields.Many2one('stock.picking.type', 'Deliver To', required=True, default='_default_picking_type',
+    picking_type_id = fields.Many2one('stock.picking.type', 'Deliver To', default="1",required=True,
         help="This will determine picking type of incoming shipment")
     move_ids = fields.One2many('stock.move', 'retour_id', string='Retour', readonly=True, ondelete='set null', copy=False)
     
-    @api.model
-    def _default_picking_type(self):
-        type_obj = self.env['stock.picking.type']
-        company_id = self.env.context.get('company_id') or self.env.user.company_id.id
-        types = type_obj.search([('code', '=', 'incoming'), ('warehouse_id.company_id', '=', company_id)])
-        if not types:
-            types = type_obj.search([('code', '=', 'incoming'), ('warehouse_id', '=', False)])
-        return types[:1]
+   
 
     @api.depends('move_ids')
     def _compute_picking(self):
@@ -62,7 +55,6 @@ class Retour(models.Model):
             template = {
                 'name': line.name or '',
                 'product_id': line.product_id.id,
-                'product_uom': line.product_uom.id,
                 'date': line.order_id.date_order,
                 'date_expected': line.date_planned,
                 'location_id': line.order_id.partner_id.property_stock_supplier.id,
