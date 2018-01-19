@@ -24,7 +24,7 @@ class Retour(models.Model):
     picking_type_id = fields.Many2one('stock.picking.type', 'Deliver To', default="1",required=True,
         help="This will determine picking type of incoming shipment")
     move_ids = fields.One2many('stock.move', 'retour_id', string='Retour', readonly=True, ondelete='set null', copy=False)
-    
+    procurement_ids = fields.One2many('procurement.order', 'retour_id', string='Procurements')
    
 
     @api.depends('move_ids')
@@ -94,3 +94,7 @@ class Retour(models.Model):
                 template['product_uom_qty'] = diff_quantity
                 done += moves.create(template)
         return done        
+    
+class ProcurementOrder(models.Model):
+    _inherit = 'procurement.order'
+    retour_id = fields.Many2one('gestiondefuts.retour', string='Retour')

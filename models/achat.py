@@ -6,6 +6,7 @@ class Achat(models.Model):
     _inherit = 'purchase.order'
     
     total_entree = fields.Integer(compute='_get_total')
+    vehicle_ids = fields.Many2many('fleet.vehicle')
     
     @api.depends('order_line.product_qty')
     def _get_total(self):

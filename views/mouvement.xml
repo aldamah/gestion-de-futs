@@ -6,6 +6,13 @@
 			<field name="model">sale.order</field>
 			<field name="inherit_id" ref="sale.view_order_form"/>
 			<field name="arch" type="xml">
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+					<button name="action_quotation_send" invisible="1"/>
+				</xpath>
+				
+				<xpath expr="//button[@name='print_quotation']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
 				
 				<xpath expr="//field[@name='validity_date']" position="replace">
 					<field name="validity_date" invisible="1"/>
@@ -97,6 +104,17 @@
 			<field name="model">purchase.order</field>
 			<field name="inherit_id" ref="purchase.purchase_order_form"/>
 			<field name="arch" type="xml">
+			
+				<xpath expr="//button[@name='action_rfq_send']" position="replace">
+					<button name="action_quotation_send" invisible="1"/>
+				</xpath>
+				
+				<xpath expr="//button[@name='print_quotation']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='date_order']" position="after">
+					<field name="vehicle_ids" string="Camion"/>
+				</xpath>
 				<xpath expr="//field[@name='order_line']//tree/field[@name='price_unit']" position="replace">
 					<field name="price_unit" invisible="1"/>
 				</xpath>
@@ -310,7 +328,9 @@
 		 <xpath expr="//field[@name='date_planned']" position="after" >
 				<field name="total_entree"/>
 			</xpath> 
- 
+ 			<xpath expr="//field[@name='total_entree']" position="after">
+				<field name="vehicle_ids" string="Transport"/>
+			</xpath>
 				
 			</field>
 		</record>  
