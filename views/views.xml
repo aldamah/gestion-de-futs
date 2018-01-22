@@ -12,13 +12,15 @@
 			
 		</field>
 		 
-         <xpath expr="//field[@name='sale_ok']" position="after">
-         	<label for="plein"/>
-         	<field name="plein"/>
-         </xpath>
+      
          <xpath expr="//field[@name='barcode']" position="replace">
          	<field name="barcode" invisble="1"/>
          </xpath>
+         <xpath	expr="//form/sheet/notebook/page[@name='sales']" position="replace" >
+         </xpath>
+         <xpath	expr="//form/sheet/notebook/page[@name='notes']" position="replace" >
+         </xpath>
+       
     </field>
 </record>
 
@@ -77,7 +79,7 @@
     <!-- menu Inventaire -->
     
     <menuitem name="Stockage" id="stock_main_menu" parent="main_gestiondefuts_menu"/>
-    <menuitem name="Inventaire" id="inventaire_menu" parent="stock_main_menu" action="futs_list_action"/>
+  <!--   <menuitem name="Inventaire" id="inventaire_menu" parent="stock_main_menu" action="futs_list_action"/>  -->
     <menuitem name="Stock" id="stock_menu" parent="stock_main_menu" action="futs_list_action"/>
    
     <!-- menu Report -->

@@ -1,10 +1,12 @@
 from odoo import fields, models, api
 
 class client_report_pdf(models.Model):
-    _name = 'gestiondefuts.client_mouv_report'
+    _name = 'res.partner.report'
     _sql = """
                 CREATE OR REPLACE VIEW client_report_pdf as 
-                SELECT * from gestiondefuts_retour
+                SELECT * from sale_order so, purchase_order po, gestiondefuts_retour re
+                WHERE so.partner_id = partner_id OR po.partner_id = partner_id OR re.partner_id = partner_id
+                ORDER BY date_order ASC
     
     """
     name = fields.Char(index=True)
