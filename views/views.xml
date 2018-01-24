@@ -20,6 +20,18 @@
          </xpath>
          <xpath	expr="//form/sheet/notebook/page[@name='notes']" position="replace" >
          </xpath>
+         <xpath	expr="//form/sheet/notebook/page/field[@name='categ_id']" position="replace" >
+         </xpath>
+         <xpath	expr="//form/sheet/notebook/page/field[@name='barcode']" position="replace" >
+         </xpath>
+         <xpath	expr="//form/sheet/notebook/page/field[@name='default_code']" position="replace" >
+         </xpath>
+         <xpath	expr="//field[@name='lst_price']" position="replace" >
+         </xpath>
+         <xpath	expr="//form/sheet/notebook/page/field[@name='standard_price']" position="replace" >
+         </xpath>
+         <xpath	expr="//form/sheet/notebook/page/field[@name='purchase_method']" position="replace" >
+         </xpath>
        
     </field>
 </record>
@@ -32,6 +44,7 @@
 		<field name="arch" type="xml">
 			<xpath expr="//field[@name='lst_price']" position="replace"/>
 			<xpath expr="//field[@name='barcode']" position="replace"/>
+			
 		</field>
 	</record>
 	

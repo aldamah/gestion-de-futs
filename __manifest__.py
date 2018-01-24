@@ -32,6 +32,7 @@
         'reports/client_report_pdf_view.xml',
         'reports/achat_report.xml',
         'reports/vente_report.xml',
+        'reports/retour_report.xml',
         
         
         

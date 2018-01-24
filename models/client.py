@@ -24,9 +24,10 @@ class Client(models.Model):
                     else:
                         continue
            
-            for pOrder in client.retour:
-                solde_retour += pOrder.product_qty
-            solde_final = solde_sale - solde_retour 
+            for order in client.retour:
+                for line in order.order_line:
+                    solde_retour += line.product_qty
+            solde_final = solde_sale - solde_retour
             client.update({
             'solde': solde_final,
             })
