@@ -105,8 +105,12 @@
 			<field name="inherit_id" ref="purchase.purchase_order_form"/>
 			<field name="arch" type="xml">
 				
-				<xpath expr="//field[@name='partner_ref']" position="replace"/>
-				
+				<xpath expr="//field[@name='partner_ref']" position="replace">
+				 <field name="is_retour" string="est un retour"/>
+				</xpath>
+				<xpath expr="//field[@name='partner_id']" position="attributes">
+				 <attribute name="string">Client/Fournisseur</attribute>
+				</xpath>
 				<xpath expr="//button[@name='action_rfq_send']" position="replace">
 					<button name="action_quotation_send" invisible="1"/>
 				</xpath>
@@ -130,10 +134,10 @@
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="//group[@class='oe_subtotal_footer oe_right']" position="replace"/>
-				<!-- <xpath expr="//form/sheet/group/group/field[@name='partner_id']" position="attributes">
+			  <xpath expr="//form/sheet/group/group/field[@name='partner_id']" position="attributes">
 					<attribute name="context">{'search_default_supplier':1, 'default_supplier':1, 'default_customer':1 }</attribute>
 					<attribute name="domain">['|',('supplier','=',True),('customer','=',True)]</attribute>
-				</xpath>  -->
+				</xpath> 
 			</field>
 		</record> 
 
@@ -172,7 +176,9 @@
 			<field name="model">purchase.order</field>
 			<field name="inherit_id" ref="purchase.purchase_order_tree"/>
 			<field name="arch" type="xml">
-			<xpath expr="//field[@name='origin']" position="replace" />
+			<xpath expr="//field[@name='origin']" position="replace" >
+				 <field name="is_retour" string="est un retour"/>
+			</xpath>
 				
 			
 			<xpath expr="//field[@name='amount_untaxed']" position="replace"/>
@@ -201,8 +207,8 @@
 	      </field>
 		</record>
 		
-		<record model="ir.actions.act_window" id="list_purchase_order_action">
-			<field name="name">Achat</field>
+		<record model="ir.actions.act_window" id="list_entree_order_action">
+			<field name="name">Entree</field>
 			<field name="res_model">purchase.order</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,kanban,form</field>
@@ -212,7 +218,7 @@
 		</record>
 		
 		 <!-- MEnu dans la categorie -->
-    <menuitem id="entree_menu" name="Achat de fûts"  parent="gestiondefuts_menu" action="list_purchase_order_action"/>
+    <menuitem id="entree_menu" name="Entrée de fûts"  parent="gestiondefuts_menu" action="list_entree_order_action"/>
     
     <menuitem id="sortie_menu" name="Vente de fûts" parent="gestiondefuts_menu" action="list_sale_order_action"/>
     

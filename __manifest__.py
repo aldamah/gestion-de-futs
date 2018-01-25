@@ -27,12 +27,12 @@
         'views/views.xml',
         'views/client.xml',
         'views/mouvement.xml',
-        'views/retour.xml',
+       
        # 'views/stock_wharehouse.xml',
         'reports/client_report_pdf_view.xml',
         'reports/achat_report.xml',
         'reports/vente_report.xml',
-        'reports/retour_report.xml',
+   
         
         
         

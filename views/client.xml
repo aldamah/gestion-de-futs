@@ -86,6 +86,17 @@
 			</field>
 		</record>
 		
+		<record id="view_client_filter" model="ir.ui.view">
+            <field name="name">gestiondefuts.client.select</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+               <xpath expr="//search" position ="inside">
+               		<filter string="Client" name="filtre_client" domain="[('customer','=',True)]"/>
+               </xpath>
+            </field>
+        </record>
+		
 		<!-- Action CLIENT -->
 	    <record model="ir.actions.act_window" id="client_list_action">
 	      <field name="name">Client</field>
@@ -96,6 +107,7 @@
 	      	<p class="oe_view_nocontent_create">Ajouter un nouveau client</p>
 	      </field>
 	    </record>
+	    
     
 		<menuitem id="client_menu" name="Client" parent="main_gestiondefuts_menu"/>
 		<menuitem id="contact_menu" name="Client" parent="client_menu" action="client_list_action"/>

@@ -5,6 +5,5 @@ from . import controllers
 from . import models
 from models import client
 from models import sale
-from models import achat
-from models import retour
+from models import entree
 from models import stock
