@@ -10,7 +10,20 @@
 				<xpath expr="//field[@name='type']" position="after">
 					
 					<field name="solde"/>
+					
 				</xpath>
+				<xpath expr="//field[@name='supplier']" position="attributes">
+                
+                    <attribute name="invisible">False</attribute>
+				</xpath>
+				<xpath expr="//field[@name='customer']" position="attributes">
+                   
+                    <attribute name="invisible">False</attribute>
+				</xpath>
+
+				
+				
+				
 				  <xpath expr="//sheet/group/group/field[@name='function']" position="replace">
 					<field name="function" invisible="1"/>
 				</xpath>
@@ -109,8 +122,8 @@
 	    </record>
 	    
     
-		<menuitem id="client_menu" name="Client" parent="main_gestiondefuts_menu"/>
-		<menuitem id="contact_menu" name="Client" parent="client_menu" action="client_list_action"/>
+		<menuitem id="client_menu" name="Partenaire" parent="main_gestiondefuts_menu"/>
+		<menuitem id="contact_menu" name="Client/Fournisseur" parent="client_menu" action="client_list_action"/>
 		
     </data>
 </odoo>

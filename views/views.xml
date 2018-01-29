@@ -20,6 +20,8 @@
          </xpath>
          <xpath	expr="//form/sheet/notebook/page[@name='notes']" position="replace" >
          </xpath>
+         <!-- <xpath	expr="//form/sheet/notebook/page[@name='general_information']//group/group[@name='group_standard_price']" position="replace" >
+         </xpath>   -->
  
          
          <xpath	expr="//field[@name='lst_price']" position="replace" >
