@@ -35,16 +35,24 @@
 								
 								</thead>
 								<tbody>
-									
+										<t t-set="total" t-value="0"/>
 										<t t-foreach="docs" t-as="o">
 											<tr>
 										<td><span t-field="o.name"/></td>
 										<td><span t-field="o.city"/></td>
-										<td><span t-field="o.solde"/></td>
-								
+										<td ><span t-field="o.solde" class="pull-right"/></td>
+											
 											</tr>
+											
+											<t t-set="total" t-value="total + o.solde"/>
 										</t>
-									
+										
+										<tr>
+											<td><strong>TOTAL</strong></td>
+											<td></td>
+											<td><span t-esc="total" class="pull-right"/></td>
+										</tr>		
+										
 								</tbody>
 								
 								

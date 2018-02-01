@@ -4,7 +4,7 @@
 <report
 	id="achat_report_pdf_action"
 	model="purchase.order"
-	string="Achat de fûts report"
+	string="Entrée de fûts report"
 	report_type="qweb-html"
 	name="gestion_de_futs.achat_report_pdf"
 	file="gestion_de_futs.achat_report"
@@ -19,7 +19,7 @@
 				<t t-call="report.external_layout">
 					<div class="page">
 						<div class="oe_structure"/>
-						<h3>ACHAT DE FUTS</h3>
+						<h3>ENTREE DE FUTS</h3>
 						<div class="page-header"/>
 						<div class="row">
 							<div class="col-sx-12">

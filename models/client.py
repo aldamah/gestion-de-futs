@@ -6,7 +6,7 @@ class Client(models.Model):
     _inherit = 'res.partner'
     solde = fields.Integer(default=0,compute='_get_solde')
     entree = fields.One2many('purchase.order', 'partner_id', 'Retour')
-
+    total = fields.Integer(compute='_get_total')
     
     @api.depends('sale_order_ids','entree')
     def _get_solde(self):
@@ -30,3 +30,5 @@ class Client(models.Model):
             client.update({
             'solde': solde_final,
             })
+    
+    
